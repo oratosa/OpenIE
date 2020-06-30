@@ -1,0 +1,4 @@
+/enron
+.python_checkpoints/
+.ipynb_checkpoints/
+.python-version
