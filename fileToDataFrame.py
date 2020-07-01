@@ -18,6 +18,3 @@ def fileToDataFrame(file_list:list) -> pd.DataFrame:
                 record[header]=mail.get(header)
         df = df.append(record, ignore_index=True)
     return df
-
-if __name__ == '__main__':
-    fileToDataFrame(file_list)

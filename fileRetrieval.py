@@ -14,6 +14,3 @@ def path_list(directory_path:str) -> list:
         return file_list, dir_list
     else:
         print("{} is not a directory path.".format(directory_path))
-
-if __name__ == '__main__':
-    path_list(directory_path)
