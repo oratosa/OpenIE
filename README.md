@@ -2,5 +2,5 @@
 Knowledge base construction by OpenIE
 * Dataset
   * enron
-* Python Version
-  * anaconda3-2019.03
+* Python condition
+  * anaconda3-2019.07/envs/allennlp
