@@ -14,4 +14,6 @@ def tripleExtraction(sentence):
             ARG0 = ' '.join([result['words'][l] for l in ARG0])
             ARG1 = ' '.join([result['words'][m] for m in ARG1])
             triples.append((ARG0, verb['verb'], ARG1))
+        else:
+            pass
     return triples
