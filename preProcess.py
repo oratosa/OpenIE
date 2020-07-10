@@ -12,5 +12,5 @@ def toSentences(message):
     sentences = tokenize.sent_tokenize(cleaned_message)
     for i,s in enumerate(sentences):
         sentences[i] = re.sub(r'\n{1,}',' ',s)
-        sentences[i] = re.sub(r'\s{2,}','',sentences[i])
+        sentences[i] = re.sub(r'\s{2,}',' ',sentences[i])
     return sentences
