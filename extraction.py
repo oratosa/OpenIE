@@ -35,14 +35,16 @@ def entityExtraction(sentence):
 def NERtripleExtraction(triples, entities):
     NER_triples = []
     for triple in triples:
+        s = None
+        o = None
         for entity in entities:
             entity = str(entity)
-            if (entity in triple[0]) or (entity in triple[2]):
-                NER_triples.append(triple)
-            else:
-                pass
+            if entity in triple[0]:
+                s = triple[0]
+            elif entity in triple[2]:
+                o = triple[2]
+        if (s is not None) and (o is not None):
+            NER_triples.append((s,triple[1],o))
     NER_triples = list(dict.fromkeys(NER_triples))
     if NER_triples != []:
         return NER_triples
-    else:
-        pass
