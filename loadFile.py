@@ -1,19 +1,30 @@
+# %%
 import os,glob
 import pandas as pd
 from email.parser import Parser
 
-def getPathList(directory_path:str) -> list:
+# %%
+def getDirList(directory_path:str) -> list:
+    if os.path.isdir(directory_path) == True:
+        directory_path = directory_path + '/**'
+        path_list = glob.glob(directory_path, recursive=True)
+        dir_list = []
+        for path in path_list:
+            if os.path.isdir(path) == True:
+                dir_list.append(path)
+        return dir_list
+    else:
+        print("{} is not a directory path.".format(directory_path))
+
+def getFileList(directory_path:str) -> list:
     if os.path.isdir(directory_path) == True:
         directory_path = directory_path + '/**'
         path_list = glob.glob(directory_path, recursive=True)
         file_list = []
-        dir_list = []
         for path in path_list:
             if os.path.isfile(path) == True:
                 file_list.append(path)
-            else:
-                dir_list.append(path)
-        return file_list, dir_list
+        return file_list
     else:
         print("{} is not a directory path.".format(directory_path))
 
@@ -34,3 +45,5 @@ def fileToDataFrame(file_list:list) -> pd.DataFrame:
                 record[header]=mail.get(header)
         df = df.append(record, ignore_index=True)
     return df
+
+# %%
