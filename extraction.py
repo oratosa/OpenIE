@@ -26,11 +26,11 @@ def entityExtraction(sentence):
     #Named entityを抽出する
     doc = nlp(sentence)
     entities = []
-    entities_type = []
+    #entities_type = []
     for entity in doc.ents:
         entities.append(entity.text)
-        entities_type.append(entity.label_)
-    return entities, entities_type
+        #entities_type.append(entity.label_)
+    return entities
 
 def NERtripleExtraction(triples, entities):
     NER_triples = []
