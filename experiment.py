@@ -53,7 +53,7 @@ def tripleDataFrame(sentence_df):
 from loadFile import getDirList, getFileList, fileToDataFrame
 
 # ディレクトリ 内のメールファイルを読み込む
-directory_path = "enron/maildir/allen-p/inbox"
+directory_path = input() #"enron/maildir/allen-p/"
 dir_list = getDirList(directory_path)
 
 for directory in dir_list:
