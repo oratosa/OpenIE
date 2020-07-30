@@ -10,32 +10,32 @@
   Message-ID: <CAE4fJj-un1Um+3aE1jTe9b8WQZuFLMaaFmCJ9zNtzTkuUja0Rw@mail.gmail.com>
 
 * 識別方法
-  * Starting point
+  * Starting point  
     From .+ at .+ \d{4}
-  * From
-    From: .+ at .+ (.+)
+  * From  
+    From: .+ at .+ (.+)  
     sender mail addressとsender nameに分割する
-  * Date
+  * Date  
     Date: .+
-  * Subject
-    Subject: .+
-    改行がある場合があるので対応する
+  * Subject  
+    Subject: .+  
+    改行がある場合があるので対応する  
   * In-Reply-To:
-  * References:
+  * References:  
     改行がある場合がある
   * Message-ID:
 
 * スキーマ
-  * スレッド
+  * スレッド  
     Message-ID, In-Reply-To, Referencesの属性を持つテーブル
-  * メール
+  * メール  
     Messega-ID, From, Date, Subject, Bodyの属性を持つテーブル
 
-* Bodyの処理
-  * インラインの開始の文字列はセンテンスとして取り込まない
-    [(On)\w*,\w*,(\d{4})\w*(<.*>).(wrote:)]
-    On Tue, Jun 30, 2020 at 3:01 PM Netha Hussain <nethahussain at gmail.com> wrote:
-  * インラインの本文はセンテンスとして取り込まない
+* Bodyの処理  
+  * インラインの開始の文字列はセンテンスとして取り込まない  
+    [(On)\w*,\w*,(\d{4})\w*(<.*>).(wrote:)]  
+    On Tue, Jun 30, 2020 at 3:01 PM Netha Hussain <nethahussain at gmail.com> wrote:  
+  * インラインの本文はセンテンスとして取り込まない  
     ^(>>|>)
 
 * フッターの除去
