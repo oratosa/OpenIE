@@ -9,21 +9,21 @@
    <CACP3XfoFBFyM1Ft1EMeiceaQhOMR_62ytHn_pbdDtd02v9wedQ@mail.gmail.com>  
   Message-ID: <CAE4fJj-un1Um+3aE1jTe9b8WQZuFLMaaFmCJ9zNtzTkuUja0Rw@mail.gmail.com>  
 
-* 識別方法
-  * Starting point  
-    From .+ at .+ \d{4}
-  * From  
-    From: .+ at .+ (.+)  
-    sender mail addressとsender nameに分割する
-  * Date  
-    Date: .+
-  * Subject  
-    Subject: .+  
-    改行がある場合があるので対応する  
-  * In-Reply-To:
-  * References:  
-    改行がある場合がある
-  * Message-ID:
+* テキストファイルの分割  
+  * 月単位のメールが1ファイルにまとまっているため分割する  
+    csplit -k -f 2020-July- 2020-July.txt '/^From /' '{9999}'
+
+
+* ヘッダー処理  
+  * email.parserのParserに任せる  
+    From:, Date:, Subject:, In-Reply-To:, References:, Message-ID:
+
+  * 追加処理  
+    * From
+    メールアドレス(送信者名)になっているため，メールアドレス，送信者名のそれぞれを別の属性として取得する    
+    Regex -> (\w* at \w*) \(\w*\)  
+    * References
+      複数のMessage-IDが含まれていたり，改行がある場合がある
 
 * スキーマ
   * スレッド  
