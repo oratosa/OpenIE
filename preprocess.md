@@ -1,13 +1,13 @@
-* メールのヘッダー例
-  From ziningy1 at andrew.cmu.edu  Wed Jul  1 21:49:35 2020
-  From: ziningy1 at andrew.cmu.edu (Ethan Ye)
-  Date: Wed, 1 Jul 2020 17:49:35 -0400
-  Subject: [Wiki-research-l] Wikipedia ORES Research Study Looking for
-	Participants
-  In-Reply-To: <CACP3XfoFBFyM1Ft1EMeiceaQhOMR_62ytHn_pbdDtd02v9wedQ@mail.gmail.com>
-  References: <CAE4fJj8bAoCLbs56g8fMo5Ek7GFk1h15ZhSJ7wy3h_KxLxhmTw@mail.gmail.com>
-   <CACP3XfoFBFyM1Ft1EMeiceaQhOMR_62ytHn_pbdDtd02v9wedQ@mail.gmail.com>
-  Message-ID: <CAE4fJj-un1Um+3aE1jTe9b8WQZuFLMaaFmCJ9zNtzTkuUja0Rw@mail.gmail.com>
+* メールのヘッダー例  
+  From ziningy1 at andrew.cmu.edu  Wed Jul  1 21:49:35 2020  
+  From: ziningy1 at andrew.cmu.edu (Ethan Ye)  
+  Date: Wed, 1 Jul 2020 17:49:35 -0400  
+  Subject: [Wiki-research-l] Wikipedia ORES Research Study Looking for  
+	Participants  
+  In-Reply-To: <CACP3XfoFBFyM1Ft1EMeiceaQhOMR_62ytHn_pbdDtd02v9wedQ@mail.gmail.com>  
+  References: <CAE4fJj8bAoCLbs56g8fMo5Ek7GFk1h15ZhSJ7wy3h_KxLxhmTw@mail.gmail.com>  
+   <CACP3XfoFBFyM1Ft1EMeiceaQhOMR_62ytHn_pbdDtd02v9wedQ@mail.gmail.com>  
+  Message-ID: <CAE4fJj-un1Um+3aE1jTe9b8WQZuFLMaaFmCJ9zNtzTkuUja0Rw@mail.gmail.com>  
 
 * 識別方法
   * Starting point  
