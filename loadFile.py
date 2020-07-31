@@ -29,21 +29,34 @@ def getFileList(directory_path:str) -> list:
         print("{} is not a directory path.".format(directory_path))
 
 def fileToDataFrame(file_list:list) -> pd.DataFrame:
-    cols = ['Path', 'Message-ID', 'Date', 'From', 'To', 'Cc', 'Bcc', 'X-From', 'X-To', 'X-cc', 'X-bcc', 'Subject', 'Message']
-    df = pd.DataFrame(index=[], columns=cols)
+    mail_cols = ['file_path','Message-ID','From','Date','Subject','Content']
+    thread_cols = ['file_path','Message-ID','In-Reply-To','References']
+    
+    mail_df = pd.DataFrame(index=[], columns=mail_cols)
+    thread_df = pd.DataFrame(index=[], columns=thread_cols)
     
     for file in file_list:
         with open(file) as f:
             mail = Parser().parse(f)
-        record = {}
-        for header in cols:
-            if header == 'Path':
-                record[header] = file
-            elif header == 'Message':
-                record[header] = mail.get_payload()
-            else:
-                record[header]=mail.get(header)
-        df = df.append(record, ignore_index=True)
-    return df
 
-# %%
+        # mail_df
+        record = {}
+        for col in mail_cols:
+            if col == 'file_path':
+                record[col] = file
+            elif col == 'Content':
+                record[col] = mail.get_payload()
+            else:
+                record[col] = mail.get(col)
+        mail_df = mail_df.append(record, ignore_index=True)
+
+        # thread_df
+        record = {}
+        for col in thread_cols:
+            if col == 'file_path':
+                record[col] = file
+            else:
+                record[col] = mail.get(col)
+        thread_df = thread_df.append(record, ignore_index=True)
+    
+    return mail_df, thread_df
