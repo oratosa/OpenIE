@@ -5,3 +5,6 @@
 __pycache__/
 /output
 test.ipynb
+db.py
+/wiki-research-l
+.DS_Store
