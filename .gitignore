@@ -10,3 +10,4 @@ db.py
 .DS_Store
 gcube-token.tagme
 /tagme
+/news
