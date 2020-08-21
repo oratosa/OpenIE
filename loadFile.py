@@ -29,7 +29,7 @@ def getFileList(directory_path:str) -> list:
         print("{} is not a directory path.".format(directory_path))
 
 def fileToDataFrame(file_list:list) -> pd.DataFrame:
-    mail_cols = ['file_path','Message-ID','From','Date','Subject','Content']
+    mail_cols = ['file_path','Message-ID','From','Date','Subject','Body']
     thread_cols = ['file_path','Message-ID','In-Reply-To','References']
     
     mail_df = pd.DataFrame(index=[], columns=mail_cols)
@@ -44,7 +44,7 @@ def fileToDataFrame(file_list:list) -> pd.DataFrame:
         for col in mail_cols:
             if col == 'file_path':
                 record[col] = file
-            elif col == 'Content':
+            elif col == 'Body':
                 record[col] = mail.get_payload()
             else:
                 record[col] = mail.get(col)
