@@ -32,17 +32,15 @@
   * メール  
     Messega-ID, From, Date, Subject, Bodyの属性を持つテーブル
 
-* Bodyの処理  
-  * インラインの開始の文字列はセンテンスとして取り込まない  
-    [(On)\w*,\w*,(\d{4})\w*(<.*>).(wrote:)]  
-    On Tue, Jun 30, 2020 at 3:01 PM Netha Hussain <nethahussain at gmail.com> wrote:  
-  * インラインの本文はセンテンスとして取り込まない  
-    ^(>>|>)
+* Bodyの処理
+  * 自然な文章をOIEの対象とできるようにBodyの各行に対して下記の分類のアノテーションを行なった
+    - 挨拶（Hi 〜，Dear 〜）Greetings
+    - 自然文 Sentences
+    - キャプション Caption
+    - 箇条書き Bullet list
+    - 結びの挨拶 Ending
+    - 引用 Quotation
+    - 署名 Footer
+    - その他（飾り付け（＝＝＝＝＝，ーーーーなど）や上に当てはまらないもの） Misc
 
-* Sentenceの処理
-  * 1文のトークン数が多すぎる文は取り込まない
-  * 1文内にインライン表記の>>が含まれている文は取り込まない
-  * ほぼ同じ文は統合する
-
-* フッターの除去
-  * てきとうなパターンが思いつかないので保留
+  * Sentencesと振られた文章のみをOIEにかける
