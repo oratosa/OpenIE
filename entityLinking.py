@@ -53,21 +53,16 @@ def confidentAnnotations(json_res, min_rho=default_rho):
     for entity in json_res['annotations']:
         if entity['rho'] > min_rho:
             annotations.append(entity)
-    return annotations #annotationsキーのバリューとなるentityを取り出した結果
+    return annotations #annotationsキーのバリューとなるentityのリスト
 
 #%%
-def mediaWiki(annotations: list, action=default_action, format=default_format, prop=default_prop, inprop=default_inprop):
-    pageids = [entity['id'] for entity in annotations]
-    if len(pageids) < 50:
-        pageids = '|'.join(map(str,pageids))
-        params = {'action':default_action,
-                'format':format,
-                'prop':default_prop,
-                'inprop':default_inprop,
-                'pageids':pageids}
-        response = requests.get(mediawiki_endpoint, params=params)
-        json_res = response.json()
-        return json_res
-    else:
-        print("The size of pageids is over 50s.")
+def mediaWiki(pageid, action=default_action, format=default_format, prop=default_prop, inprop=default_inprop):
+    params = {'action':default_action,
+            'format':format,
+            'prop':default_prop,
+            'inprop':default_inprop,
+            'pageids':pageid}
+    response = requests.get(mediawiki_endpoint, params=params)
+    json_res = response.json()
+    return json_res
 # %%
