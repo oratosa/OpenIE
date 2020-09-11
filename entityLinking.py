@@ -12,7 +12,7 @@ with open('gcube-token.tagme') as f:
 default_lang='en'
 default_tweet='false'
 default_include_abstract='false'
-default_include_categories='true'
+default_include_categories='false'
 default_include_all_spots='false'
 default_long_text=3,
 default_epsilon=0.3
@@ -30,7 +30,7 @@ default_inprop='url'
 
 #%%
 def tagme(text, GCUBE_TOKEN=GCUBE_TOKEN, lang=default_lang, tweet=default_tweet, include_abstract=default_include_abstract,
-        include_categories=default_include_categories, include_all_spots=default_include_all_spots, long_text=default_long_text,
+        include_categories=default_include_categories, include_all_spots=default_include_all_spots,
         epsilon=default_epsilon):
     params = {'text':text,
         'gcube-token':GCUBE_TOKEN,
@@ -39,7 +39,7 @@ def tagme(text, GCUBE_TOKEN=GCUBE_TOKEN, lang=default_lang, tweet=default_tweet,
         'include_abstract':include_abstract,
         'include_categories':include_categories,
         'include_all_spots':include_all_spots,
-        'long_text':long_text,
+        #'long_text':long_text,
         'epsilon':epsilon
         }
     response = requests.post(tagme_endpoint, params=params)
