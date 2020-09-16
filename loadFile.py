@@ -29,34 +29,22 @@ def getFileList(directory_path:str) -> list:
         print("{} is not a directory path.".format(directory_path))
 
 def fileToDataFrame(file_list:list) -> pd.DataFrame:
-    mail_cols = ['file_path','Message-ID','From','Date','Subject','Body']
-    thread_cols = ['file_path','Message-ID','In-Reply-To','References']
+    mail_cols = ['file_path','message_id','from','date','in_reply_to','references''subject','body']
     
     mail_df = pd.DataFrame(index=[], columns=mail_cols)
-    thread_df = pd.DataFrame(index=[], columns=thread_cols)
     
     for file in file_list:
         with open(file) as f:
             mail = Parser().parse(f)
 
-        # mail_df
         record = {}
         for col in mail_cols:
             if col == 'file_path':
                 record[col] = file
-            elif col == 'Body':
+            elif col == 'body':
                 record[col] = mail.get_payload()
             else:
                 record[col] = mail.get(col)
         mail_df = mail_df.append(record, ignore_index=True)
-
-        # thread_df
-        record = {}
-        for col in thread_cols:
-            if col == 'file_path':
-                record[col] = file
-            else:
-                record[col] = mail.get(col)
-        thread_df = thread_df.append(record, ignore_index=True)
     
-    return mail_df, thread_df
+    return mail_df
