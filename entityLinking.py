@@ -4,6 +4,7 @@
 
 import requests
 import pprint
+import json
 
 #Parameters on tagme
 with open('gcube-token.tagme') as f:
@@ -14,7 +15,7 @@ default_tweet='false'
 default_include_abstract='false'
 default_include_categories='false'
 default_include_all_spots='false'
-default_long_text=3,
+default_long_text=10,
 default_epsilon=0.3
 
 default_rho=0.1
@@ -30,7 +31,7 @@ default_inprop='url'
 
 #%%
 def tagme(text, GCUBE_TOKEN=GCUBE_TOKEN, lang=default_lang, tweet=default_tweet, include_abstract=default_include_abstract,
-        include_categories=default_include_categories, include_all_spots=default_include_all_spots,
+        include_categories=default_include_categories, include_all_spots=default_include_all_spots, long_text=default_long_text,
         epsilon=default_epsilon):
     params = {'text':text,
         'gcube-token':GCUBE_TOKEN,
@@ -39,13 +40,16 @@ def tagme(text, GCUBE_TOKEN=GCUBE_TOKEN, lang=default_lang, tweet=default_tweet,
         'include_abstract':include_abstract,
         'include_categories':include_categories,
         'include_all_spots':include_all_spots,
-        #'long_text':long_text,
+        'long_text':long_text,
         'epsilon':epsilon
         }
-    response = requests.post(tagme_endpoint, params=params)
-    json_res = response.json()
+    try:
+        response = requests.post(tagme_endpoint, params=params)
+        json_res = response.json()
+        return json_res #jsonを辞書形式にした結果
+    except json.JSONDecodeError:
+        return None
 
-    return json_res #jsonを辞書形式にした結果
 
 #%%
 def confidentAnnotations(json_res, min_rho=default_rho):
