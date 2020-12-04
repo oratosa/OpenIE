@@ -12,3 +12,6 @@ gcube-token.tagme
 /news
 /analysis/output
 /trec
+/trash
+/analysis
+.pytest_cache
